@@ -1,0 +1,22 @@
+@host = http://localhost:3000/api/v1/orders
+@adminHost = http://localhost:3000/api/v1/admin
+
+
+@token= Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwiaWF0IjoxNjI4ODMwMDY1LCJleHAiOjE2Mjg4NDQ0NjV9.8nQwPcCsnOmis7FKxOaOddAtsSeIXulXWQ5rRzuYLh4
+
+post {{host}}/
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+	"cart":[{"product":"60e60c6093ca3a468cd87181","quantity":1,"variant":"Onesize"},{"product":"60e60c6093ca3a468cd87181","quantity":1,"variant":"M"},{"product":"610baf40c3b59530b8192328","quantity":1,"variant":"Onesize"},{"product":"610baf3ec3b59530b8192323","quantity":1,"variant":"Onesize"}]
+}
+
+###
+get {{host}}/all
+Authorization: {{token}}
+
+
+###
+get {{host}}/611607f64420845eaca229d9
+Authorization: {{token}}

@@ -1,0 +1,98 @@
+@host = http://localhost:3000/api/v1/users
+@adminHost = http://localhost:3000/api/v1/admin
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwiaWF0IjoxNjI4ODAxNTUxLCJleHAiOjE2Mjg4MTU5NTF9.5xp3BwjBKAjGEamEYA0r_S5XGGXKXv6SGHO616Y6bqs
+@tokenUser = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3Q0QHRlc3QuY29tIiwiaWF0IjoxNjI2NTU2MTA1LCJleHAiOjE2MjY1NzA1MDV9.VsEqNtRied6HHhdvYzltKZYBTkyey6bMLtVQppM5a4c
+
+get {{host}}/
+Authorization: {{token}}
+###
+
+get {{host}}/all
+Authorization: {{token}}
+###
+post {{host}}/signup
+Content-Type: application/json
+
+{
+    "email" : "testaa@test.com",
+    "firstName" : "Testaa",
+    "lastName" : "Testoa",
+	"password": "test1"
+}
+###
+post {{host}}/signin
+Content-Type: application/json
+
+{
+	"email" : "test3@test.com",
+    "password" : "test200"
+}
+
+###
+post {{host}}/signin_with_google
+Content-Type: application/json
+
+{
+	"id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjdmNTQ4ZjY3MDg2OTBjMjExMjBiMGFiNjY4Y2FhMDc5YWNiYzJiMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMTgwNzA1NTE2MjI4LWQxajFiYmtubGs5OTJxNWplOGRhNjZkYnE3bG02Y21hLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMTgwNzA1NTE2MjI4LWQxajFiYmtubGs5OTJxNWplOGRhNjZkYnE3bG02Y21hLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAxNTM3MjgxNDUxMTU5NDg5NTc5IiwiaGQiOiJpbnRlZ3JpZnkuaW8iLCJlbWFpbCI6ImRhdC5uZ3V5ZW5AaW50ZWdyaWZ5LmlvIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIwWG16b2JQS3BUekdJcWlBMlJQVmtnIiwibmFtZSI6IkRhdCBOZ3V5ZW4iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUFUWEFKenJDSG53QWhHbmFkNWRsNGlpaXBpbWp6dmxUaEpEZ3BpMnRwUU09czk2LWMiLCJnaXZlbl9uYW1lIjoiRGF0IiwiZmFtaWx5X25hbWUiOiJOZ3V5ZW4iLCJsb2NhbGUiOiJlbiIsImlhdCI6MTYyNjQ3MTkwMywiZXhwIjoxNjI2NDc1NTAzLCJqdGkiOiIyMGM4M2JiNzMzY2I4OWNiYjM2NTdlM2UzMDMxOTQ2YmRmYzMzY2M1In0.Jzfb0vNNUldFaEjkxFyo6gDUFN5o7GxTtO2m9P1G5hzbruu8TLCTZEXMMXef1a1wm8SigUPZFN-q9OmjFn9ArV7xTVpjT8e1GgW9X5KYCuQZAIIUsCO3UuFDYYnApN4FBHIR-PRy4NsvpIJqPEt-RoOMzf0Y7W3BfjstHWE8y8ojBtnpF82Dud7WB6NKvClp_QyekF94lwYQwADYqeMo7A_Md7ibaUF21dI6k4M0SMok_CzbdDq4hd-wmVIL5K25ILqCnx7GVX4fGLd-tTVrTTBGRSDeRB0ElQIeHnfRHee94_t8hZmjxYw8MMKjWiJDR_RELbWWTWcrjUJSOSQdIA"
+}
+
+###
+get {{host}}/signout
+
+###
+post {{host}}/reset_password
+Content-Type: application/json
+
+{
+	"email":"test@test.com"
+}
+
+###
+put {{host}}/password
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+	"oldPassword":"test1",
+	"newPassword":"test100"
+}
+
+###
+put {{host}}/
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "firstName" : "Testya",
+    "lastName" : "Testo",
+    "email" : "test3@test.com",
+	"role": "User",
+	"address": "abc 112"
+}
+
+###
+post {{adminHost}}/ban_user
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+	"userId":"60e697ffc6e2a35b24949d47",
+	"reason":"No reason",
+	"days":10
+}
+
+###
+get {{adminHost}}/unban_user/60e697ffc6e2a35b24949d47
+Authorization: {{token}}
+
+
+###
+put {{adminHost}}/updateban
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+	"userId":"60e697ffc6e2a35b24949d47",
+	"reason":"No reason",
+	"days":20
+}

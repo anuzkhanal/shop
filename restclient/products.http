@@ -1,0 +1,73 @@
+@host = https://dat-integrify-ecommerce-back.herokuapp.com/api/v1
+# @host = http://localhost:3000/api/v1
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwiaWF0IjoxNjI4MTQ2Njc2LCJleHAiOjE2MjgxNjEwNzZ9.qVuRApcPWQTYh3nHvmd8sdksS4dOedem3JnsBLgINLY
+get {{host}}/products
+###
+get {{host}}/products/60e60c6093ca3a468cd87181
+Authorization: {{token}}
+
+###
+post {{host}}/products/test
+Content-Type: application/json
+
+{
+	"email": "datnguyen170595@gmail.com",
+	"firstName": "Dat",
+	"lastName": "Nguyen",
+	"role": "User"
+}
+###
+post {{host}}/products
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+	 "name":"New product 10",
+	 "description":"a new product",
+	 "price": 200,
+	 "variants":["Onesize"],
+     "categories":[
+		 "60e60c3f93ca3a468cd8717f",
+		  "60e57f36b060465c4019d219"
+	 ]
+}
+###
+put {{host}}/products/60e5513fa1104453f45fb9ssbasa8
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+     "price": 200,
+	 "variants":["S", "M", "L"],
+     "categories":[
+		 "60e57f36b060465c4019d219"
+	 ]
+}
+###
+delete {{host}}/products/60fa710b75795c5e94232272
+Authorization: {{token}}
+
+
+###
+get {{host}}/products/categories
+###
+post {{host}}/products/categories
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+	"name":"Old1"
+}
+###
+put {{host}}/products/categories/60e60c3f93ca3a468cd8717fasdasd
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+	"name":"Old no more"
+}
+
+###
+delete {{host}}/products/categories/60ef50593deaa81c3029d4c3
+Content-Type: application/json
+Authorization: {{token}}
